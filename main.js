@@ -21,7 +21,6 @@ let attemptsPageSize = 10;
 let attemptsTotalRecords = 0;
 let attemptsSorting = [{ fldname: 'attempt_date', sort_order: 'asc' }];
 
-// Store all data for client-side pagination
 let allQuizzes = [];
 let allAnswers = [];
 let allAttempts = [];

@@ -8,7 +8,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     height: 100vh;
     overflow: hidden;
-    background: #000;
+    background: #edf0f5;
+    padding: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -17,7 +18,10 @@ body {
 
 .dashboard {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 10px);
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
 }
 
 .sidebar {
@@ -204,7 +208,12 @@ body {
     background: #FCFBFE;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     margin-left: -18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
     padding: 16px;
     overflow: hidden;
 }
