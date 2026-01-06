@@ -9,7 +9,7 @@ body {
     height: 100vh;
     overflow: hidden;
     background: #edf0f5;
-    padding: 5px;
+    padding: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -18,7 +18,7 @@ body {
 
 .dashboard {
     display: flex;
-    height: calc(100vh - 10px);
+    height: calc(100vh - 20px);
     border-radius: 20px;
     overflow: hidden;
     background: #000;

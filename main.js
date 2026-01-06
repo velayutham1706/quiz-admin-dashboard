@@ -876,34 +876,38 @@ function setupSorting() {
       if (currentOrder === "asc") {
         newOrder = "desc";
       } else if (currentOrder === "desc") {
-        newOrder = "asc";
+        newOrder = null;
       }
 
       document.querySelectorAll("#quiz-page .data-table thead th.sortable").forEach(th2 => {
         th2.classList.remove("asc", "desc", "active");
       });
       
-      this.classList.add(newOrder, "active");
+      if (newOrder) {
+        this.classList.add(newOrder, "active");
 
-      allQuizzes.sort((a, b) => {
-        let aVal = a[field];
-        let bVal = b[field];
-        
-        if (!isNaN(aVal) && !isNaN(bVal)) {
-          aVal = parseFloat(aVal) || 0;
-          bVal = parseFloat(bVal) || 0;
-          return newOrder === "asc" ? aVal - bVal : bVal - aVal;
-        }
-        
-        aVal = String(aVal || "").toLowerCase();
-        bVal = String(bVal || "").toLowerCase();
-        
-        if (newOrder === "asc") {
-          return aVal.localeCompare(bVal);
-        } else {
-          return bVal.localeCompare(aVal);
-        }
-      });
+        allQuizzes.sort((a, b) => {
+          let aVal = a[field];
+          let bVal = b[field];
+          
+          if (!isNaN(aVal) && !isNaN(bVal)) {
+            aVal = parseFloat(aVal) || 0;
+            bVal = parseFloat(bVal) || 0;
+            return newOrder === "asc" ? aVal - bVal : bVal - aVal;
+          }
+          
+          aVal = String(aVal || "").toLowerCase();
+          bVal = String(bVal || "").toLowerCase();
+          
+          if (newOrder === "asc") {
+            return aVal.localeCompare(bVal);
+          } else {
+            return bVal.localeCompare(aVal);
+          }
+        });
+      } else {
+        loadQuizzes(() => {});
+      }
 
       quizPage = 1;
       updateQuizPagination();
@@ -919,34 +923,38 @@ function setupSorting() {
       if (currentOrder === "asc") {
         newOrder = "desc";
       } else if (currentOrder === "desc") {
-        newOrder = "asc";
+        newOrder = null;
       }
 
       document.querySelectorAll("#answers-page .data-table thead th.sortable").forEach(th2 => {
         th2.classList.remove("asc", "desc", "active");
       });
       
-      this.classList.add(newOrder, "active");
+      if (newOrder) {
+        this.classList.add(newOrder, "active");
 
-      allAnswers.sort((a, b) => {
-        let aVal = a[field];
-        let bVal = b[field];
-        
-        if (!isNaN(aVal) && !isNaN(bVal)) {
-          aVal = parseFloat(aVal) || 0;
-          bVal = parseFloat(bVal) || 0;
-          return newOrder === "asc" ? aVal - bVal : bVal - aVal;
-        }
-        
-        aVal = String(aVal || "").toLowerCase();
-        bVal = String(bVal || "").toLowerCase();
-        
-        if (newOrder === "asc") {
-          return aVal.localeCompare(bVal);
-        } else {
-          return bVal.localeCompare(aVal);
-        }
-      });
+        allAnswers.sort((a, b) => {
+          let aVal = a[field];
+          let bVal = b[field];
+          
+          if (!isNaN(aVal) && !isNaN(bVal)) {
+            aVal = parseFloat(aVal) || 0;
+            bVal = parseFloat(bVal) || 0;
+            return newOrder === "asc" ? aVal - bVal : bVal - aVal;
+          }
+          
+          aVal = String(aVal || "").toLowerCase();
+          bVal = String(bVal || "").toLowerCase();
+          
+          if (newOrder === "asc") {
+            return aVal.localeCompare(bVal);
+          } else {
+            return bVal.localeCompare(aVal);
+          }
+        });
+      } else {
+        loadAnswers(() => {});
+      }
 
       answersPage = 1;
       updateAnswersPagination();
@@ -962,34 +970,38 @@ function setupSorting() {
       if (currentOrder === "asc") {
         newOrder = "desc";
       } else if (currentOrder === "desc") {
-        newOrder = "asc";
+        newOrder = null;
       }
 
       document.querySelectorAll("#attempt-page .data-table thead th.sortable").forEach(th2 => {
         th2.classList.remove("asc", "desc", "active");
       });
       
-      this.classList.add(newOrder, "active");
+      if (newOrder) {
+        this.classList.add(newOrder, "active");
 
-      allAttempts.sort((a, b) => {
-        let aVal = a[field];
-        let bVal = b[field];
-        
-        if (!isNaN(aVal) && !isNaN(bVal)) {
-          aVal = parseFloat(aVal) || 0;
-          bVal = parseFloat(bVal) || 0;
-          return newOrder === "asc" ? aVal - bVal : bVal - aVal;
-        }
-        
-        aVal = String(aVal || "").toLowerCase();
-        bVal = String(bVal || "").toLowerCase();
-        
-        if (newOrder === "asc") {
-          return aVal.localeCompare(bVal);
-        } else {
-          return bVal.localeCompare(aVal);
-        }
-      });
+        allAttempts.sort((a, b) => {
+          let aVal = a[field];
+          let bVal = b[field];
+          
+          if (!isNaN(aVal) && !isNaN(bVal)) {
+            aVal = parseFloat(aVal) || 0;
+            bVal = parseFloat(bVal) || 0;
+            return newOrder === "asc" ? aVal - bVal : bVal - aVal;
+          }
+          
+          aVal = String(aVal || "").toLowerCase();
+          bVal = String(bVal || "").toLowerCase();
+          
+          if (newOrder === "asc") {
+            return aVal.localeCompare(bVal);
+          } else {
+            return bVal.localeCompare(aVal);
+          }
+        });
+      } else {
+        loadAttempts(() => {});
+      }
 
       attemptsPage = 1;
       updateAttemptsPagination();
@@ -1061,6 +1073,8 @@ let isCollapsed = false;
 function initSettings() {
     const darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
     const sidebarVisible = JSON.parse(localStorage.getItem('sidebarVisible')) !== false;
+    const autoRefresh = JSON.parse(localStorage.getItem('autoRefresh')) || false;
+    const defaultPageSize = localStorage.getItem('defaultPageSize') || '10';
 
     if (darkMode) {
         document.body.classList.add('dark-mode');
@@ -1072,6 +1086,25 @@ function initSettings() {
         sidebar.classList.add('collapsed');
         isCollapsed = true;
         collapseBtn.style.transform = 'rotate(180deg)';
+    }
+
+    if (autoRefresh) {
+        const autoRefreshToggle = document.getElementById('autoRefreshToggle');
+        if (autoRefreshToggle) autoRefreshToggle.classList.add('active');
+        startAutoRefresh();
+    }
+
+    const pageSizeSelect = document.getElementById('defaultPageSize');
+    if (pageSizeSelect) {
+        pageSizeSelect.value = defaultPageSize;
+        document.querySelectorAll('.page-size-select').forEach(select => {
+            if (select.id !== 'defaultPageSize') {
+                select.value = defaultPageSize;
+            }
+        });
+        quizPageSize = parseInt(defaultPageSize);
+        answersPageSize = parseInt(defaultPageSize);
+        attemptsPageSize = parseInt(defaultPageSize);
     }
 
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -1103,6 +1136,72 @@ function initSettings() {
                 collapseBtn.style.transform = 'rotate(180deg)';
             }
         });
+    }
+
+    const autoRefreshToggle = document.getElementById('autoRefreshToggle');
+    if (autoRefreshToggle) {
+        autoRefreshToggle.addEventListener('click', function () {
+            this.classList.toggle('active');
+            const isActive = this.classList.contains('active');
+            localStorage.setItem('autoRefresh', isActive);
+
+            if (isActive) {
+                startAutoRefresh();
+            } else {
+                stopAutoRefresh();
+            }
+        });
+    }
+
+     if (pageSizeSelect) {
+        pageSizeSelect.addEventListener('change', function () {
+            const newSize = this.value;
+            localStorage.setItem('defaultPageSize', newSize);
+            
+            quizPageSize = parseInt(newSize);
+            answersPageSize = parseInt(newSize);
+            attemptsPageSize = parseInt(newSize);
+            
+            document.getElementById('quizPageSize').value = newSize;
+            document.getElementById('answersPageSize').value = newSize;
+            document.getElementById('attemptsPageSize').value = newSize;
+            
+            quizPage = 1;
+            answersPage = 1;
+            attemptsPage = 1;
+            
+            updateQuizPagination();
+            updateAnswersPagination();
+            updateAttemptsPagination();
+        });
+    }
+
+    const clearCacheBtn = document.getElementById('clearCacheBtn');
+    if (clearCacheBtn) {
+        clearCacheBtn.addEventListener('click', function () {
+            if (confirm('Are you sure you want to clear all cached data? This will reload the page.')) {
+                refreshCache = true;
+                loadAllData();                
+            }
+        });
+    }
+}
+
+let autoRefreshInterval = null;
+
+function startAutoRefresh() {
+    if (autoRefreshInterval) return;
+    
+    autoRefreshInterval = setInterval(() => {
+        refreshCache = true;
+        loadAllData();
+    }, 5 * 60 * 1000);
+}
+
+function stopAutoRefresh() {
+    if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+        autoRefreshInterval = null;
     }
 }
 

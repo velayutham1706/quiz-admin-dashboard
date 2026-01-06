@@ -206,7 +206,7 @@
           <div class="page-header">
             <h1>Quizzes</h1>
             <button class="action-btn" onclick="handleOpenTstructButton(event, this)"
-              data-eot="recordid=,transid=quizt">
+              data-eot="recordid=0,transid=quizt">
               Create Quiz
             </button>
           </div>
@@ -214,12 +214,18 @@
             <table class="data-table" id="quizTable">
               <thead>
                 <tr>
-                  <th class="sortable" data-field="q_id" data-table="quiz">Quiz ID <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="q_title" data-table="quiz">Quiz Name <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="total_questions" data-table="quiz">Questions <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="total_attempts" data-table="quiz">Attempts <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="last_date" data-table="quiz">Last Date <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="difficulty" data-table="quiz">Difficulty <span class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="q_id" data-table="quiz">Quiz ID <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="q_title" data-table="quiz">Quiz Name <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="total_questions" data-table="quiz">Questions <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="total_attempts" data-table="quiz">Attempts <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="last_date" data-table="quiz">Last Date <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="difficulty" data-table="quiz">Difficulty <span
+                      class="icon-arrow">&UpArrow;</span></th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -292,11 +298,16 @@
             <table class="data-table">
               <thead>
                 <tr>
-                  <th class="sortable" data-field="q_id" data-table="answers">ID <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="q_title" data-table="answers">Quiz Title <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="difficulty" data-table="answers">Difficulty <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="answers_added" data-table="answers">Answers Added <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="ques_id" data-table="answers">Question ID <span class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="q_id" data-table="answers">ID <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="q_title" data-table="answers">Quiz Title <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="difficulty" data-table="answers">Difficulty <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="answers_added" data-table="answers">Answers Added <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="ques_id" data-table="answers">Question ID <span
+                      class="icon-arrow">&UpArrow;</span></th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -361,13 +372,20 @@
             <table class="data-table">
               <thead>
                 <tr>
-                  <th class="sortable" data-field="username" data-table="attempts">User ID <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="user_name" data-table="attempts">Name <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="q_title" data-table="attempts">Quiz <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="total_points" data-table="attempts">Score <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="total_questions" data-table="attempts">Total Questions <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="percentage" data-table="attempts">Percentage <span class="icon-arrow">&UpArrow;</span></th>
-                  <th class="sortable" data-field="attempt_date" data-table="attempts">Date <span class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="username" data-table="attempts">User ID <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="user_name" data-table="attempts">Name <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="q_title" data-table="attempts">Quiz <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="total_points" data-table="attempts">Score <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="total_questions" data-table="attempts">Total Questions <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="percentage" data-table="attempts">Percentage <span
+                      class="icon-arrow">&UpArrow;</span></th>
+                  <th class="sortable" data-field="attempt_date" data-table="attempts">Date <span
+                      class="icon-arrow">&UpArrow;</span></th>
                 </tr>
               </thead>
               <tbody id="attemptsTableBody"></tbody>
@@ -475,6 +493,36 @@
               <div class="toggle-switch" id="sidebarToggle">
                 <div class="toggle-slider"></div>
               </div>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Auto-refresh Dashboard</h3>
+                <p>Automatically refresh dashboard data every 5 minutes</p>
+              </div>
+              <div class="toggle-switch" id="autoRefreshToggle">
+                <div class="toggle-slider"></div>
+              </div>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Default Page Size</h3>
+                <p>Set default number of items per page in tables</p>
+              </div>
+              <select class="page-size-select" id="defaultPageSize" style="width: auto;">
+                <option value="10" selected>10 rows</option>
+                <option value="25">25 rows</option>
+                <option value="50">50 rows</option>
+                <option value="100">100 rows</option>
+              </select>
+            </div>
+            <div class="setting-item" style="border-bottom: none;">
+              <div class="setting-info">
+                <h3>Clear Cache</h3>
+                <p>Clear all cached data and reload fresh data</p>
+              </div>
+              <button class="action-btn" id="clearCacheBtn" style="padding: 8px 16px; font-size: 0.875rem;">
+                Clear Cache
+              </button>
             </div>
           </div>
         </div>
